@@ -65,9 +65,9 @@ export default async function Calendar({ params }: { params: CalendarParams }) {
     );
 }
 
-function Month({ year, month, events }) {
+function Month({ year, month, events } : { year: string, month: string, events: Event[] }) {
     const days = getDaysInMonth(year, month);
-    const firstDay = new Date(year, month - 1, 1).getDay();
+    const firstDay = new Date(parseInt(year), parseInt(month,10) - 1, 1).getDay();
     const weeks = Math.ceil((days + firstDay) / 7);
     const weeksArray = Array.from({ length: weeks }, (_, i) => i);
     return (
@@ -91,7 +91,7 @@ function Month({ year, month, events }) {
     );
 }
 
-function Week({ week, firstDay, days, events }) {
+function Week({ week, firstDay, days, events } : { week: number, firstDay: number, days: number, events: Event[] }) {
     const daysArray = Array.from({ length: 7 }, (_, i) => i);
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
     const handleEventClick = (event: Event) => {
@@ -116,11 +116,11 @@ function Week({ week, firstDay, days, events }) {
     );
 }
 
-function EventDetails({ event }) {
+function EventDetails({ event } : { event: Event }) {
     return (
-        <div className="w-full h-full bg-gray-500 flex items-center justify-center relative">
+        <div className="w-full px-1 flex items-center justify-center relative">
             <div className="bg-white">
-                <img src={`/assets/${event.imageFilenameFull}.webp`} className="w-full h-full" />
+                <img src={`/assets/${event.imageFilenameFull}.webp`} className="h-full" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-1 text-white">
                     <h1 className="text-2xl font-extrabold dark:text-white my-1">{event.title}</h1>
                     <p className="my-1 text-sm">{event.summary}</p>
@@ -142,6 +142,6 @@ function Day({ day, events, onClick }: { day: number, events: Event[], onClick: 
     </div>);
 }
 
-function getDaysInMonth(year, month) {
-    return new Date(year, month, 0).getDate();
+function getDaysInMonth(year: string, month: string) {
+    return new Date(parseInt(year,10), parseInt(month,10), 0).getDate();
 }
