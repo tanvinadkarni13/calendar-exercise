@@ -117,7 +117,8 @@ function EventDetails({ event }: { event: Event }) {
             <img src={`/assets/${event.imageFilenameFull}.webp`} className="h-full" />
             <section className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-1 text-white bg-dark bg-opacity-30">
                 <h1 className="text-2xl font-extrabold dark:text-white my-1">{event.title}</h1>
-                <p className="my-1 text-sm">{event.summary}</p>
+                {/* This is safe to do as the source of the html is out own api. */}
+                <p className="my-1 text-sm" dangerouslySetInnerHTML={{__html: event.summary}}></p>
                 <p className="font-extrabold my-1 mb-3"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
                 <a href={event.learnMoreLink} target="_new" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Learn More</a>
                 <a href={event.purchaseLink} target="_new" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Pre-Order Now</a>
