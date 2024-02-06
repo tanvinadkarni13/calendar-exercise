@@ -73,13 +73,9 @@ function Month({ year, month, events } : { year: string, month: string, events: 
     return (
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-1 lg:text-left">
             <div className="flex justify-between">
-                <div className="w-40 font-bold text-center">Sunday</div>
-                <div className="w-40 font-bold text-center">Monday</div>
-                <div className="w-40 font-bold text-center">Tuesday</div>
-                <div className="w-40 font-bold text-center">Wednesday</div>
-                <div className="w-40 font-bold text-center">Thursday</div>
-                <div className="w-40 font-bold text-center">Friday</div>
-                <div className="w-40 font-bold text-center">Saturday</div>
+            {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((day) => 
+                {return (<div key={day} className="w-40 font-bold text-center">{day}</div>)}
+            )}
             </div>
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
             {weeksArray.map((week) => {
@@ -106,7 +102,7 @@ function Week({ week, firstDay, days, events } : { week: number, firstDay: numbe
             {daysArray.map((day) => {
                 const dayNumber = week * 7 + day - firstDay + 1;
                 if (dayNumber <= 0 || dayNumber > days) {
-                    return <div key={day} className="w-1/6 h-40 aspect-square border m-1 bg-white shadow"></div>;
+                    return <div key={day} className="w-1/6 h-40 aspect-square border m-1 light:bg-white dark:bg-black  shadow"></div>;
                 }
                 return <Day key={day} day={dayNumber} events={events} onClick={handleEventClick} />;
             })}
@@ -135,7 +131,7 @@ function EventDetails({ event } : { event: Event }) {
 function Day({ day, events, onClick }: { day: number, events: Event[], onClick: (event: Event) => void }) {
     const dayEvents = events.filter((event: Event) => event.launchDateObj?.getDate() === day)
     const event = dayEvents.length > 0 ? dayEvents[0] : null;
-    if (!event) return (<div className="w-1/6 h-40 aspect-square border relative m-1 bg-white shadow"><div className="absolute top-0 right-0 m-1 p-1">{day}</div></div>);
+    if (!event) return (<div className="w-1/6 h-40 aspect-square border relative m-1 light:bg-white dark:bg-black shadow"><div className="absolute top-0 right-0 m-1 p-1">{day}</div></div>);
     return (<div className="w-1/6 h-40 aspect-square border relative m-1 bg-white shadow" onClick={() => onClick(event)}>
         <img src={`/assets/${event.imageFilenameThumb}.webp`} className="w-full h-full" />
         <div className="absolute top-0 right-0 m-1 bg-sky-500 p-1 rounded-full">{day}</div>
