@@ -71,7 +71,7 @@ function Month({ year, month, events }: { year: string, month: string, events: E
     const weeks = Math.ceil((days + firstDay) / 7);
     const weeksArray = Array.from({ length: weeks }, (_, i) => i);
     return (
-        <div className="mb-32 grid text-center">
+        <div className="mb-32 grid text-center w-full">
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
             <div className="flex justify-between">
                 {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((day) => { return (<div key={day} className="w-1/6 font-bold text-center text-sm">{day}</div>) }
@@ -113,13 +113,13 @@ function Week({ week, firstDay, days, events }: { week: number, firstDay: number
 
 function EventDetails({ event }: { event: Event }) {
     return (
-        <div className="w-full px-1 flex items-center justify-center relative">
+        <div className="w-full px-1 flex items-center justify-center relative ">
             <img src={`/assets/${event.imageFilenameFull}.webp`} className="h-full" />
-            <section className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-1 text-white bg-dark bg-opacity-30">
-                <h1 className="text-2xl font-extrabold dark:text-white my-1">{event.title}</h1>
+            <section className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-1 text-white  bg-dark bg-opacity-60">
+                <h1 className="text-2xl font-extrabold dark:text-white my-1 bg-black bg-opacity-60">{event.title}</h1>
                 {/* This is safe to do as the source of the html is out own api. */}
-                <p className="my-1 text-sm" dangerouslySetInnerHTML={{__html: event.summary}}></p>
-                <p className="font-extrabold my-1 mb-3"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
+                <p className="my-1 text-sm bg-black bg-opacity-60" dangerouslySetInnerHTML={{__html: event.summary}}></p>
+                <p className="font-extrabold my-1 mb-3 bg-black bg-opacity-60"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
                 <a href={event.learnMoreLink} target="_new" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Learn More</a>
                 <a href={event.purchaseLink} target="_new" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Pre-Order Now</a>
             </section>
