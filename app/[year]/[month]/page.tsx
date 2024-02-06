@@ -3,7 +3,7 @@ import { useState } from "react";
 import { redirect } from 'next/navigation'
 import Link from "next/link";
 
-const APP_URL = "http://localhost:3000/data/events.json"
+const APP_URL = "https://calendar-exercise-git-main-tanvinadkarni13s-projects.vercel.app/data/events.json"
 
 type Event = {
     launchDate: string,
