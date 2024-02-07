@@ -1,4 +1,25 @@
 [
+
+      {
+        "id": "3224599475c6b3a81c11541",
+        "launchDate": "2023-06-19T15:21:14.503Z",
+        "title": "Hogwarts Legacy",
+        "summary": "Experience Hogwarts in the late 1800s and decide the fate of the wizarding world.",
+        "imageFilenameThumb": "hogwarts-legacy__1x1",
+        "imageFilenameFull": "hogwarts-legacy__16x9",
+        "learnMoreLink": "https://www.playstation.com/en-us/games/hogwarts-legacy/",
+        "purchaseLink": "https://www.playstation.com/en-us/games/hogwarts-legacy/#buy-now"
+    },
+    {
+        "id": "9225599465c6b3a81c11541",
+        "launchDate": "2023-06-20T15:21:14.503Z",
+        "title": "Fall Guys",
+        "summary": "Stumble towards greatness.<br>Fall Guys is a free, cross-platform, massively multiplayer, party royale game where you and your fellow contestants compete through escalating rounds of absurd obstacle course chaos until one lucky victor remains!",
+        "imageFilenameThumb": "fall-guys__1x1",
+        "imageFilenameFull": "fall-guys__16x9",
+        "learnMoreLink": "https://www.playstation.com/en-us/games/fall-guys-ultimate-knockout/",
+        "purchaseLink": "https://www.playstation.com/en-us/games/fall-guys-ultimate-knockout/#buy-now"
+    },
      {
         "id": "3224599465c6b3a81c11541",
         "launchDate": "2023-03-05T15:21:14.503Z",
