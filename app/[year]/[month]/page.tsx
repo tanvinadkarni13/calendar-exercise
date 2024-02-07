@@ -71,7 +71,7 @@ function Month({ year, month, events }: { year: string, month: string, events: E
             </div>
             {weeksArray.map((week) => {
                 return (
-                    <Week key={week} week={week} firstDay={firstDay} days={days} events={events} />
+                    <Week key={`week-${week}`} week={week} firstDay={firstDay} days={days} events={events} />
                 );
             })}
         </div>
@@ -95,10 +95,10 @@ function Week({ week, firstDay, days, events }: { week: number, firstDay: number
                 if (dayNumber <= 0 || dayNumber > days) {
                     return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-white dark:bg-black shadow"></div>;
                 }
-                return <Day key={day} day={dayNumber} events={events} onClick={handleEventClick} />;
+                return <Day key={`day-${day}`} day={dayNumber} events={events} onClick={handleEventClick} />;
             })}
         </div>
-        {selectedEvent && <EventDetails event={selectedEvent} />}
+        {selectedEvent && <EventDetails key={selectedEvent.title} event={selectedEvent} />}
     </div>
     );
 }
