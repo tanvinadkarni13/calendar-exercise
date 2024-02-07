@@ -1,5 +1,15 @@
 [
     {
+        "id": "1785476915c6b3a21620b48",
+        "launchDate": "2023-01-31T19:45:11.811Z",
+        "title": "Megaman 11",
+        "summary": "Mega Man is back! The newest entry in this iconic series blends classic, challenging 2D platforming action with a fresh look. The stunning new visual style refreshes the series' iconic colorfulness, combining hand-drawn environments with detailed, 3D character models.",
+        "imageFilenameThumb": "megaman-11__1x1",
+        "imageFilenameFull": "megaman-11__16x9",
+        "learnMoreLink": "https://www.playstation.com/en-us/games/mega-man-11/",
+        "purchaseLink": "https://www.playstation.com/en-us/games/mega-man-11/#buy-now"
+    },
+    {
         "id": "18213007415c6b3aceb83604",
         "launchDate": "2024-09-13T09:01:30.152Z",
         "title": "Gran Turismo 7",
