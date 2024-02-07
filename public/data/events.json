@@ -1,5 +1,15 @@
 [
     {
+        "id": "2025599465c6b3a81c11541",
+        "launchDate": "2023-06-11T15:21:14.503Z",
+        "title": "Resident Evil 4",
+        "summary": "A thrilling reimagining of Capcom's groundbreaking action-horror classic. Resident Evil 4, 2005’s legendary survival horror, is brought fully up-to-date in this ground-up remake.",
+        "imageFilenameThumb": "resident-evil-4__1x1",
+        "imageFilenameFull": "resident-evil-4__16x9",
+        "learnMoreLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/",
+        "purchaseLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/#buy-now"
+    },
+    {
         "id": "1785476915c6b3a21620b48",
         "launchDate": "2023-01-31T19:45:11.811Z",
         "title": "Megaman 11",
