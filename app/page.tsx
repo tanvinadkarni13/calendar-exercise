@@ -9,10 +9,11 @@ export default function Home() {
         <Link href="/2023/6" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2"> Calender Demo</Link>
       </div>
       <div className="grid pl-5 pt-5">
-        <h2 className="mb-2 text-lg font-semibold light:text-gray-900 dark:text-white">Salient features:</h2>
+        <h2 className="mb-2 text-lg font-semibold dark:text-white light:text-gray-900">Salient features:</h2>
         <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
           <li>
-            Attention to ARIA accessibility, support for high contrast mode.
+            Attention to ARIA accessibility, support for high contrast mode. The calendar offers both light mode and dark mode options.<br></br>
+            Please note: If you're seeing the calendar with a dark background, it's likely because your operating system is configured for dark mode. 
           </li>
           <li>
             Responsive design that adapts to all screen sizes.
@@ -32,7 +33,7 @@ export default function Home() {
         </ul>
       </div>
       <div className="grid pl-5 pt-5">
-        <h2 className="mb-2 text-lg font-semibold light:text-gray-900 dark:text-white">Few things that can be made better:</h2>
+        <h2 className="mb-2 text-lg font-semibold dark:text-white light:text-gray-900">Few things that can be made better:</h2>
         <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
           <li>
           API needs to be more efficient, we should be fetch events only of specific month.
