@@ -121,7 +121,7 @@ function EventDetails({ event }: { event: LaunchEvent }) {
             <section className="w-10/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-1 text-white  bg-dark bg-opacity-60 p2">
                 <h1 className="text-2xl font-extrabold dark:text-white my-1 bg-black bg-opacity-60 sm:line-clamp-1 xs:line-clamp-1">{event.title}</h1>
                 {/* event.summary has unsafe html characters and hence not displaying them as markup. */}
-                <p className="my-1 text-sm bg-black bg-opacity-60 p-2 text-start sm:line-clamp-2 xs:line-clamp-2 md:line-clamp-2 line-clamp-5">{event.summary}</p>
+                <p className="my-1 text-sm bg-black bg-opacity-60 p-2 text-start sm:line-clamp-2 xs:line-clamp-2 md:line-clamp-2 line-clamp-8">{event.summary}</p>
                 <p className="font-extrabold my-1 mb-3 bg-black bg-opacity-60 p-2"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
                 <div className="flex font-extrabold my-1 mb-3 p-2 justify-center">
                     <div>
