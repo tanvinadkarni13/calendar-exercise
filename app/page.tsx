@@ -12,9 +12,6 @@ export default function Home() {
         <h2 className="mb-2 text-lg font-semibold light:text-gray-900 dark:text-white">Salient features:</h2>
         <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
           <li>
-            Has a basic unit test written with jest.
-          </li>
-          <li>
             Attention to ARIA accessibility, support for high contrast mode.
           </li>
           <li>
@@ -28,6 +25,9 @@ export default function Home() {
           </li>
           <li>
             Uses Tailwindcss
+          </li>
+          <li>
+            Has a basic unit test written with jest.
           </li>
         </ul>
       </div>
