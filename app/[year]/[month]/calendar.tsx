@@ -37,7 +37,7 @@ export default async function Calendar({ year, month, events } : CalendarProps) 
                 <div className="grow h-10 items-center text-center">
                     <h1 className="text-2xl text-center" data-testid="calendar-year-month">{inputDate.toLocaleString('default', { month: 'long' })} {inputDate.getFullYear()}</h1>
                 </div>
-                <NavigationButton date={prevMonth} direction="&gt;"/>
+                <NavigationButton date={nextMonth} direction="&gt;"/>
             </div>
             <Month year={year} month={month} events={currentMonthEvents} />
         </main>
@@ -99,7 +99,7 @@ function Week({ week, firstDay, days, events }: { week: number, firstDay: number
             {daysArray.map((day) => {
                 const dayNumber = week * 7 + day - firstDay + 1;
                 if (dayNumber <= 0 || dayNumber > days) {
-                    return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-black dark:bg-white shadow"></div>;
+                    return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-black dark:bg-black shadow"></div>;
                 }
                 return <Day key={`day-${day}`} day={dayNumber} events={events} onClick={handleEventClick} />;
             })}
@@ -141,8 +141,8 @@ function EventDetails({ event }: { event: LaunchEvent }) {
 function Day({ day, events, onClick }: { day: number, events: LaunchEvent[], onClick: (event: LaunchEvent) => void }) {
     const dayEvents = events.filter((event: LaunchEvent) => event.launchDateObj?.getDate() === day)
     const event = dayEvents.length > 0 ? dayEvents[0] : null;
-    if (!event) return (<div className="w-1/6 aspect-square border relative m-1 light:bg-black dark:bg-white shadow"><div className="absolute top-0 right-0 m-1 p-1">{day}</div></div>);
-    return (<div className="w-1/6 aspect-square border relative m-1 light:bg-black dark:bg-white shadow cursor-pointer" onClick={() => onClick(event)}>
+    if (!event) return (<div className="w-1/6 aspect-square border relative m-1 light:bg-black dark:bg-black shadow"><div className="absolute top-0 right-0 m-1 p-1">{day}</div></div>);
+    return (<div className="w-1/6 aspect-square border relative m-1 light:bg-black dark:bg-black shadow cursor-pointer" onClick={() => onClick(event)}>
         <img alt={event.title} src={`/assets/${event.imageFilenameThumb}.webp`} className="w-full h-full" />
         <div className="absolute top-0 right-0 m-1 bg-sky-500 p-1 rounded-full">{day}</div>
     </div>);
