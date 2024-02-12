@@ -14,7 +14,7 @@ type CalendarProps = {
  * @paramt events - array of events for the year and month
  * @returns 
  */
-export default async function Calendar({ year, month, events } : CalendarProps) {
+export default async function Calendar({ year, month, events }: CalendarProps) {
 
     const inputDate = new Date(year, month, 0);
     const currentDate = new Date(year, month, 1);
@@ -29,15 +29,15 @@ export default async function Calendar({ year, month, events } : CalendarProps) 
         });
     // events applicable for the current month. 
     // Depending on how heavy the api paload is, we may design a backedn api that returns only specific month's events. 
-    const currentMonthEvents = updatedEvents.filter((item: LaunchEvent) => item.launchDateObj?.getFullYear() ===year && (item.launchDateObj?.getMonth() + 1) === month )
+    const currentMonthEvents = updatedEvents.filter((item: LaunchEvent) => item.launchDateObj?.getFullYear() === year && (item.launchDateObj?.getMonth() + 1) === month)
     return (
-        <main data-testid="calendar-events" className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main data-testid="calendar-events" className="flex min-h-screen flex-col items-center p-6">
             <div className="flex w-full ">
-                <NavigationButton date={prevMonth} direction="&lt;"/>
+                <NavigationButton date={prevMonth} direction="&lt;" />
                 <div className="grow h-10 items-center text-center">
                     <h1 className="text-2xl text-center" data-testid="calendar-year-month">{inputDate.toLocaleString('default', { month: 'long' })} {inputDate.getFullYear()}</h1>
                 </div>
-                <NavigationButton date={nextMonth} direction="&gt;"/>
+                <NavigationButton date={nextMonth} direction="&gt;" />
             </div>
             <Month year={year} month={month} events={currentMonthEvents} />
         </main>
@@ -49,7 +49,7 @@ export default async function Calendar({ year, month, events } : CalendarProps) 
  * @param param0 
  * @returns 
  */
-function NavigationButton ({ date, direction, title } : { date: Date, direction: string, title?:string }) {
+function NavigationButton({ date, direction, title }: { date: Date, direction: string, title?: string }) {
     return (
         <div className="flex-none w-14 h-10">
             <a title={title} className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" href={`/${date.getFullYear()}/${date.getMonth() + 1}`}>{direction}</a>
@@ -72,7 +72,7 @@ function Month({ year, month, events }: { year: number, month: number, events: L
         <div className="mb-32 grid text-center w-full">
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
             <div className="flex justify-between">
-                {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((day) => { return (<div key={day} className="w-1/6 font-bold text-center text-sm">{day}</div>) }
+                {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => { return (<div key={day} className="w-1/6 font-bold text-center text-sm">{day}</div>) }
                 )}
             </div>
             {weeksArray.map((week) => {
@@ -116,25 +116,29 @@ function Week({ week, firstDay, days, events }: { week: number, firstDay: number
  */
 function EventDetails({ event }: { event: LaunchEvent }) {
     return (
-        <div className="w-full px-1 flex items-center justify-center relative ">
-            <img alt={event.title} src={`/assets/${event.imageFilenameFull}.webp`} className="h-full" />
-            <section className="w-10/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-1 text-white  bg-dark bg-opacity-60 p2">
-                <h1 className="text-2xl font-extrabold dark:text-white my-1 bg-black bg-opacity-60 sm:line-clamp-1 xs:line-clamp-1">{event.title}</h1>
-                {/* event.summary has unsafe html characters and hence not displaying them as markup. */}
-                <p className="my-1 text-sm bg-black bg-opacity-60 p-2 text-start sm:line-clamp-2 xs:line-clamp-2 md:line-clamp-2 line-clamp-8">{event.summary}</p>
-                <p className="font-extrabold my-1 mb-3 bg-black bg-opacity-60 p-2"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
-                <div className="flex font-extrabold my-1 mb-3 p-2 justify-center">
-                    <div>
-                    <a href={event.learnMoreLink} target="_new" className="text-sm bg-red-500 hover:bg-red-700 text-white font-boltext-white bg-yellow-400 hover:bg-yellow-500 focus:text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-center mb-2outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900d py-2 px-4 rounded">Learn More</a>
-                    
-                  
+        <div className="w-full px-1 flex items-center justify-center">
+            <div className="w-full min-h-min flex items-center justify-center" style={{
+                backgroundImage: `url(/assets/${event.imageFilenameFull}.webp)`,
+                backgroundSize: `cover`,
+            }}>
+                <section className="m-5 text-white  bg-black bg-opacity-60 p2">
+                    <h1 className="lg:text-xl text-base font-extrabold dark:text-white my-1  sm:line-clamp-1 xs:line-clamp-1">{event.title}</h1>
+                    {/* event.summary has unsafe html characters and hence not displaying them as markup. */}
+                    <p className="my-1 text-xs  p-2 text-start sm:line-clamp-2 xs:line-clamp-2 md:line-clamp-2 line-clamp-5">{event.summary}</p>
+                    <p className="font-extrabold text-xs my-1 mb-3  p-2"> <span>Available </span>{event.launchDateObj?.toLocaleString('default', { month: 'long' })}, {event.launchDateObj?.getDate()} {event.launchDateObj?.getFullYear()}</p>
+                    <div className="flex font-extrabold my-1 mb-3 p-2 justify-center">
+                        <div>
+                            <a href={event.learnMoreLink} target="_new" className="text-sm bg-red-500 hover:bg-red-700 text-white font-boltext-white bg-yellow-400 hover:bg-yellow-500 focus:text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-center mb-2outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900d py-2 px-4 rounded">Learn More</a>
+
+
+                        </div>
+                        <div>
+                            <a href={event.purchaseLink} target="_new" className="text-sm text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Pre-Order Now</a>
+
+                        </div>
                     </div>
-                    <div>
-                    <a href={event.purchaseLink} target="_new" className="text-sm text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Pre-Order Now</a>
-             
-                    </div>
-                 </div>
-            </section>
+                </section>
+            </div>
         </div>);
 }
 
