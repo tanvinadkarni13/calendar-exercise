@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import Calendar from "./calendar";
 
 
-export default async function Page({ params }: { params: { year: string, month: string } }) {
+export default function Page({ params }: { params: { year: string, month: string } }) {
     const { year, month } = params;
 
     if (!isValidYear(year) || !isValidMonth(month)) {
