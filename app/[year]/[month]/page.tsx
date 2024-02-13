@@ -166,5 +166,6 @@ function mockAPI(year: number, month: number) {
                 totalList[0],
             ]
     }
+    return [];
 }
 // SIMULATING A REQUEST TO THE API
