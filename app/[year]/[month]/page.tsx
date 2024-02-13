@@ -1,10 +1,9 @@
 "use client"
-import { useState } from "react";
 import { redirect } from 'next/navigation'
 import Calendar from "./calendar";
 
 
-export default function Page({ params }: { params: { year: string, month: string } }) {
+export default async function Page({ params }: { params: { year: string, month: string } }) {
     const { year, month } = params;
 
     if (!isValidYear(year) || !isValidMonth(month)) {
@@ -24,10 +23,9 @@ function isValidMonth(month: string) {
 }
 
 /**
- * 
- * @param year USing this method instead of a real api call just to make sure we have sufficient data to show.
- * @param month 
- * @returns 
+ *  Using this method instead of a real api call just to make sure we have sufficient data to show. 
+ *  
+ * The mocked API looks weird because I have avoided random even generation and kept it stable for a given month.
  */
 function mockAPI(year: number, month: number) {
     const totalList = [
@@ -35,7 +33,7 @@ function mockAPI(year: number, month: number) {
             "id": "7060050195c6b3a514f7300",
             "launchDate": `${year}-${month.toString().padStart(2, '0')}-20T14:36:38.034Z`,
             "title": "Fall Guys",
-            "summary": "Stumble towards greatness.<br>Fall Guys is a free, cross-platform, massively multiplayer, party royale game where you and your fellow contestants compete through escalating rounds of absurd obstacle course chaos until one lucky victor remains!",
+            "summary": "Stumble towards greatness. Fall Guys is a free, cross-platform, massively multiplayer, party royale game where you and your fellow contestants compete through escalating rounds of absurd obstacle course chaos until one lucky victor remains!",
             "imageFilenameThumb": "fall-guys__1x1",
             "imageFilenameFull": "fall-guys__16x9",
             "learnMoreLink": "https://www.playstation.com/en-us/games/fall-guys-ultimate-knockout/",
@@ -45,7 +43,7 @@ function mockAPI(year: number, month: number) {
             "id": "2a25599465c6b3a81c11501",
             "launchDate": `${year}-${month.toString().padStart(2, '0')}-11T17:21:14.503Z`,
             "title": "Resident Evil 4",
-            "summary": "A thrilling reimagining of Capcom's groundbreaking action-horror classic. Resident Evil 4, 2005’s legendary survival horror, is brought fully up-to-date in this ground-up remake.",
+            "summary": "A thrilling reimagining of Capcom's groundbreaking action-horror classic. Resident Evil 4, 2005s legendary survival horror, is brought fully up-to-date in this ground-up remake.",
             "imageFilenameThumb": "resident-evil-4__1x1",
             "imageFilenameFull": "resident-evil-4__16x9",
             "learnMoreLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/",
@@ -170,4 +168,3 @@ function mockAPI(year: number, month: number) {
        
     ];
 }
-// SIMULATING A REQUEST TO THE API
