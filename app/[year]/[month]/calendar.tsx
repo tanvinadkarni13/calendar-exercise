@@ -1,5 +1,6 @@
 
 "use client"
+import { on } from "events";
 import { useState } from "react";
 
 type CalendarProps = {
@@ -52,7 +53,7 @@ export default async function Calendar({ year, month, events }: CalendarProps) {
 function NavigationButton({ date, direction, title }: { date: Date, direction: string, title?: string }) {
     return (
         <div className="flex-none w-14 h-10">
-            <a title={title} className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" href={`/${date.getFullYear()}/${date.getMonth() + 1}`}>{direction}</a>
+            <a title={title} className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" href={`/${date.getFullYear()}/${date.getMonth() + 1}`}>{direction}</a>
         </div>
     )
 }
@@ -67,6 +68,8 @@ function Month({ year, month, events }: { year: number, month: number, events: L
     const firstDay = new Date(year, month - 1, 1).getDay();
     const weeks = Math.ceil((days + firstDay) / 7);
     const weeksArray = Array.from({ length: weeks }, (_, i) => i);
+    const [selectedEvent, setSelectedEvent] = useState<LaunchEvent | undefined>(undefined);
+    const [selectedWeek, setSelectedWeek] = useState<number | undefined>(undefined);
     // TODO: The weeks days names here should come from locale and should be translatable. 
     return (
         <div className="mb-32 grid text-center w-full">
@@ -77,34 +80,32 @@ function Month({ year, month, events }: { year: number, month: number, events: L
             </div>
             {weeksArray.map((week) => {
                 return (
-                    <Week key={`week-${week}`} week={week} firstDay={firstDay} days={days} events={events} />
+                    <Week key={`week-${week}`} week={week} firstDay={firstDay} days={days} events={events} onEventSelected={(week, event)=>{ setSelectedWeek(week); setSelectedEvent(event);}} event={
+                        selectedWeek == week ? selectedEvent : undefined
+                    }/>
                 );
             })}
         </div>
     );
 }
 
-function Week({ week, firstDay, days, events }: { week: number, firstDay: number, days: number, events: LaunchEvent[] }) {
+function Week({ week, firstDay, days, events, event, onEventSelected }: { week: number, firstDay: number, days: number, events: LaunchEvent[], event?: LaunchEvent, onEventSelected: (week:number, vent: LaunchEvent) => void}) {
     const daysArray = Array.from({ length: 7 }, (_, i) => i);
-    const [selectedEvent, setSelectedEvent] = useState<LaunchEvent | null>(null);
     const handleEventClick = (event: LaunchEvent) => {
-        if (event == null || selectedEvent == event) {
-            setSelectedEvent(null);
-        } else {
-            setSelectedEvent(event);
-        }
+        // Event bubbling !
+        onEventSelected(week, event);
     }
     return (<div>
         <div className="flex justify-between">
             {daysArray.map((day) => {
                 const dayNumber = week * 7 + day - firstDay + 1;
                 if (dayNumber <= 0 || dayNumber > days) {
-                    return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-black dark:bg-black shadow"></div>;
+                    return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-gray dark:bg-black shadow"></div>;
                 }
                 return <Day key={`day-${day}`} day={dayNumber} events={events} onClick={handleEventClick} />;
             })}
         </div>
-        {selectedEvent && <EventDetails key={selectedEvent.title} event={selectedEvent} />}
+        {event && <EventDetails key={event.title} event={event} />}
     </div>
     );
 }
@@ -117,7 +118,7 @@ function Week({ week, firstDay, days, events }: { week: number, firstDay: number
 function EventDetails({ event }: { event: LaunchEvent }) {
     return (
         <div className="w-full px-1 flex items-center justify-center">
-            <div className="w-full min-h-min flex items-center justify-center" style={{
+            <div className="w-full min-h-96 flex items-center justify-center" style={{
                 backgroundImage: `url(/assets/${event.imageFilenameFull}.webp)`,
                 backgroundSize: `cover`,
             }}>
