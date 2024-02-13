@@ -40,16 +40,6 @@ function mockAPI(year: number, month: number) {
             "purchaseLink": "https://www.playstation.com/en-us/games/fall-guys-ultimate-knockout/#buy-now"
         },
         {
-            "id": "2a25599465c6b3a81c11501",
-            "launchDate": `${year}-${month.toString().padStart(2, '0')}-11T17:21:14.503Z`,
-            "title": "Resident Evil 4",
-            "summary": "A thrilling reimagining of Capcom's groundbreaking action-horror classic. Resident Evil 4, 2005s legendary survival horror, is brought fully up-to-date in this ground-up remake.",
-            "imageFilenameThumb": "resident-evil-4__1x1",
-            "imageFilenameFull": "resident-evil-4__16x9",
-            "learnMoreLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/",
-            "purchaseLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/#buy-now"
-        },
-        {
             "id": "6615829505c6b88b4e30e02",
             "launchDate": `${year}-${month.toString().padStart(2, '0')}-19T20:14:52.687Z`,
             "title": "Hogwarts Legacy",
@@ -90,16 +80,6 @@ function mockAPI(year: number, month: number) {
             "purchaseLink": "https://www.playstation.com/en-us/games/mega-man-11/#buy-now"
         },
         {
-            "id": "2a25599465c6b3a81c11541",
-            "launchDate": `${year}-${month.toString().padStart(2, '0')}-21T15:21:14.503Z`,
-            "title": "Resident Evil 4",
-            "summary": "A thrilling reimagining of Capcoms groundbreaking action-horror classic. Resident Evil 4, 2005s legendary survival horror, is brought fully up-to-date in this ground-up remake.",
-            "imageFilenameThumb": "resident-evil-4__1x1",
-            "imageFilenameFull": "resident-evil-4__16x9",
-            "learnMoreLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/",
-            "purchaseLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/#buy-now"
-        },
-        {
             "id": "339715715c6b3898dd3da5",
             "launchDate": `${year}-${month.toString().padStart(2, '0')}-25T21:32:46.879Z`,
             "title": "Metal Gear Solid: The Phantom Pain 2",
@@ -108,26 +88,6 @@ function mockAPI(year: number, month: number) {
             "imageFilenameFull": "metal-gear-solid__16x9",
             "learnMoreLink": "https://www.playstation.com/en-us/games/metal-gear-solid-v-the-phantom-pain/",
             "purchaseLink": "https://www.playstation.com/en-us/games/metal-gear-solid-v-the-phantom-pain/#buy-now"
-        },
-        {
-            "id": "9692393625c6b390c959715",
-            "launchDate": `${year}-${month.toString().padStart(2, '0')}-26T00:29:27.528Z`,
-            "title": "Spiderman 2",
-            "summary": "BE GREATER. TOGETHER. Spider-Men, Peter Parker and Miles Morales, return for an exciting new adventure in the critically acclaimed Marvels Spider-Man franchise for PS5. <br> Swing, jump and utilize the new Web Wings to travel across Marvel’s New York, quickly switching between Peter Parker and Miles Morales to experience different stories and epic new powers, as the iconic villain Venom threatens to destroy their lives, their city and the ones they love.",
-            "imageFilenameThumb": "spiderman-2__1x1",
-            "imageFilenameFull": "spiderman-2__16x9",
-            "learnMoreLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/",
-            "purchaseLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/#buy-now"
-        },
-        {
-            "id": "9692393625c6b390c959715",
-            "launchDate": `${year}-${month.toString().padStart(2, '0')}-26T00:29:27.528Z`,
-            "title": "Spiderman 2",
-            "summary": "BE GREATER. TOGETHER. Spider-Men, Peter Parker and Miles Morales, return for an exciting new adventure in the critically acclaimed Marvels Spider-Man franchise for PS5. <br> Swing, jump and utilize the new Web Wings to travel across Marvel’s New York, quickly switching between Peter Parker and Miles Morales to experience different stories and epic new powers, as the iconic villain Venom threatens to destroy their lives, their city and the ones they love.",
-            "imageFilenameThumb": "spiderman-2__1x1",
-            "imageFilenameFull": "spiderman-2__16x9",
-            "learnMoreLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/",
-            "purchaseLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/#buy-now"
         },
     ];
     switch (month) {
@@ -151,15 +111,15 @@ function mockAPI(year: number, month: number) {
         case 7:
         case 11:
             return [
-                totalList[6],
-                totalList[7],
-                totalList[8],
+                totalList[4],
+                totalList[2],
+                totalList[1],
             ]
         case 4:
         case 8:
         case 12:
             return [
-                totalList[9],
+                totalList[5],
                 totalList[1],
                 totalList[0],
             ]
