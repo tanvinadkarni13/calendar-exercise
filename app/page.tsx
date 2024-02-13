@@ -32,21 +32,6 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      <div className="grid pl-5 pt-5">
-        <h2 className="mb-2 text-lg font-semibold dark:text-white light:text-gray-900">Few things that can be made better:</h2>
-        <ul className="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-          <li>
-          API needs to be more efficient, we should be fetch events only of specific month.
-          </li>
-          <li>
-          Calendar component can be made even more generic that supports not just one type of event but different types of event. 
-          </li>
-          <li>
-          Calendar does not have support for localization, supports only English at the moment.  
-          </li>
-        </ul>
-      </div>
-
     </main>
   );
 }
