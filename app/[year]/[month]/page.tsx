@@ -100,14 +100,14 @@ function mockAPI(year: number, month: number) {
             "purchaseLink": "https://www.playstation.com/en-us/games/resident-evil-4-remake/#buy-now"
         },
         {
-            "id": "2143690395c6a39ea9621c0",
-            "launchDate": `${year}-${month.toString().padStart(2, '0')}-23T15:21:14.503Z`,
-            "title": "Hotline Miami",
-            "summary": "Hotline Miami is a high-octane action game overflowing with raw brutality, hard-boiled gunplay and skull crushing close combat. Set in an alternative 1989 Miami, you will assume the role of a mysterious antihero on a murderous rampage against the shady underworld at the behest of voices on your answering machine. Soon you'll find yourself struggling to get a grip of what is going on and why you are prone to these acts of violence.",
-            "imageFilenameThumb": "hotline-miami__1x1",
-            "imageFilenameFull": "hotline-miami__16x9",
-            "learnMoreLink": "https://www.playstation.com/en-us/games/hotline-miami/",
-            "purchaseLink": "https://www.playstation.com/en-us/games/hotline-miami/#buy-now"
+            "id": "339715715c6b3898dd3da5",
+            "launchDate": `${year}-${month.toString().padStart(2, '0')}-25T21:32:46.879Z`,
+            "title": "Metal Gear Solid: The Phantom Pain 2",
+            "summary": "Ushering in a new era for the franchise with cutting-edge technology powered by the Fox Engine, MGSV: The Phantom Pain, will provide players a first-rate gaming experience as they are offered tactical freedom to carry out open-world missions.",
+            "imageFilenameThumb": "metal-gear-solid__1x1",
+            "imageFilenameFull": "metal-gear-solid__16x9",
+            "learnMoreLink": "https://www.playstation.com/en-us/games/metal-gear-solid-v-the-phantom-pain/",
+            "purchaseLink": "https://www.playstation.com/en-us/games/metal-gear-solid-v-the-phantom-pain/#buy-now"
         },
         {
             "id": "9692393625c6b390c959715",
