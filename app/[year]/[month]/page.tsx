@@ -134,7 +134,17 @@ function mockAPI(year: number, month: number) {
     ];
     switch (month) {
         case 1:
+            return [
+                totalList[0],
+                totalList[1],
+                totalList[2],
+            ]
         case 5:
+            return [
+                totalList[0],
+                totalList[1],
+                totalList[2],
+            ]
         case 9:
             return [
                 totalList[0],
@@ -142,7 +152,17 @@ function mockAPI(year: number, month: number) {
                 totalList[2],
             ]
         case 2:
+            return [
+                totalList[3],
+                totalList[4],
+                totalList[5],
+            ]
         case 6:
+            return [
+                totalList[3],
+                totalList[4],
+                totalList[5],
+            ]
         case 10:
             return [
                 totalList[3],
@@ -150,7 +170,17 @@ function mockAPI(year: number, month: number) {
                 totalList[5],
             ]
         case 3:
+            return [
+                totalList[6],
+                totalList[7],
+                totalList[8],
+            ]
         case 7:
+            return [
+                totalList[6],
+                totalList[7],
+                totalList[8],
+            ]
         case 11:
             return [
                 totalList[6],
@@ -158,7 +188,17 @@ function mockAPI(year: number, month: number) {
                 totalList[8],
             ]
         case 4:
+            return [
+                totalList[9],
+                totalList[1],
+                totalList[0],
+            ]
         case 8:
+            return [
+                totalList[9],
+                totalList[1],
+                totalList[0],
+            ]
         case 12:
             return [
                 totalList[9],
@@ -166,6 +206,10 @@ function mockAPI(year: number, month: number) {
                 totalList[0],
             ]
     }
-    return [];
+    return [
+        totalList[0],
+        totalList[4],
+        totalList[8],
+    ];
 }
 // SIMULATING A REQUEST TO THE API
