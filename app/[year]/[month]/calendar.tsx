@@ -100,7 +100,7 @@ function Week({ week, firstDay, days, events, event, onEventSelected }: { week: 
             {daysArray.map((day) => {
                 const dayNumber = week * 7 + day - firstDay + 1;
                 if (dayNumber <= 0 || dayNumber > days) {
-                    return <div key={day} className="w-1/6 aspect-square border m-1 light:bg-gray dark:bg-black shadow"></div>;
+                    return <div key={day} className="w-1/6 aspect-square border m-1 bg-gray-300 shadow"></div>;
                 }
                 return <Day key={`day-${day}`} day={dayNumber} events={events} onClick={handleEventClick} />;
             })}
