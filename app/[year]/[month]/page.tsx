@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { redirect } from 'next/navigation'
-import Calendar  from "./calendar";
+import Calendar from "./calendar";
 
 
 export default async function Page({ params }: { params: { year: string, month: string } }) {
@@ -10,8 +10,8 @@ export default async function Page({ params }: { params: { year: string, month: 
     if (!isValidYear(year) || !isValidMonth(month)) {
         redirect(`/${new Date().getFullYear()}/${new Date().getMonth() + 1}`)
     }
-   
-    return <Calendar year={parseInt(year,10)} month={parseInt(month,10)} events={mockAPI(parseInt(year,10),parseInt(month,10))} />
+
+    return <Calendar year={parseInt(year, 10)} month={parseInt(month, 10)} events={mockAPI(parseInt(year, 10), parseInt(month, 10))} />
 }
 
 
@@ -30,7 +30,7 @@ function isValidMonth(month: string) {
  * @returns 
  */
 function mockAPI(year: number, month: number) {
-    const totalList =  [
+    const totalList = [
         {
             "id": "7060050195c6b3a514f7300",
             "launchDate": `${year}-${month}-20T14:36:38.034Z`,
@@ -70,7 +70,7 @@ function mockAPI(year: number, month: number) {
             "imageFilenameFull": "gran-turismo-7__16x9",
             "learnMoreLink": "https://www.playstation.com/en-us/games/gran-turismo-7/",
             "purchaseLink": "https://www.playstation.com/en-us/games/gran-turismo-7/#buy-now"
-        }, 
+        },
         {
             "id": "939715715c6b3898dd3da5",
             "launchDate": `${year}-${month}-25T21:32:46.879Z`,
@@ -121,12 +121,50 @@ function mockAPI(year: number, month: number) {
             "learnMoreLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/",
             "purchaseLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/#buy-now"
         },
+        {
+            "id": "9692393625c6b390c959715",
+            "launchDate": `${year}-${month}-26T00:29:27.528Z`,
+            "title": "Spiderman 2",
+            "summary": "BE GREATER. TOGETHER. Spider-Men, Peter Parker and Miles Morales, return for an exciting new adventure in the critically acclaimed Marvel’s Spider-Man franchise for PS5. <br> Swing, jump and utilize the new Web Wings to travel across Marvel’s New York, quickly switching between Peter Parker and Miles Morales to experience different stories and epic new powers, as the iconic villain Venom threatens to destroy their lives, their city and the ones they love.",
+            "imageFilenameThumb": "spiderman-2__1x1",
+            "imageFilenameFull": "spiderman-2__16x9",
+            "learnMoreLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/",
+            "purchaseLink": "https://www.playstation.com/en-us/games/marvels-spider-man-2/#buy-now"
+        },
     ];
-    return [
-        totalList[month%5],
-        totalList[month%3],
-        totalList[month%2],
-        totalList[month%9],
-    ];
+    switch (month) {
+        case 1:
+        case 5:
+        case 9:
+            return [
+                totalList[0],
+                totalList[1],
+                totalList[2],
+            ]
+        case 2:
+        case 6:
+        case 10:
+            return [
+                totalList[3],
+                totalList[4],
+                totalList[5],
+            ]
+        case 3:
+        case 7:
+        case 11:
+            return [
+                totalList[6],
+                totalList[7],
+                totalList[8],
+            ]
+        case 4:
+        case 8:
+        case 12:
+            return [
+                totalList[9],
+                totalList[1],
+                totalList[0],
+            ]
+    }
 }
 // SIMULATING A REQUEST TO THE API
